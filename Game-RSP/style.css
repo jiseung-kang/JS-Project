@@ -1,0 +1,117 @@
+#app {
+	padding: 40px 0;
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.tit-name {
+	display: block;
+	position: relative;
+	font-weight: 700;
+	font-size: 32px;
+	margin-bottom: 20px;
+}
+
+.cont-desc {
+	display: block;
+	position: relative;
+	margin: 20px 10px;
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.cont-desc strong {
+	font-size: 20px;
+	font-weight: 700;
+	background-color: rgb(252, 228, 192);
+}
+
+.rsp-enemy {
+	display: block;
+	position: relative;
+	font-size: 72px;
+	margin-bottom: 20px;
+}
+
+#enemy-choose {
+	display: block;
+	position: relative;
+}
+
+.user {
+	display: block;
+	position: relative;
+	font-size: 54px;
+}
+
+.user .lst-btn {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.btn-user {
+	display: block;
+	position: relative;
+	background-color: rgb(255, 238, 0);
+	border-radius: 10px;
+	padding: 10px;
+	margin: 3px;
+}
+
+#user-s,
+#user-r,
+#user-p {
+	cursor: pointer;
+}
+
+.btn-user:hover {
+	background-color: rgb(255, 217, 0);
+}
+
+.play {
+	display: block;
+	position: relative;
+	height: 20px;
+	padding: 20px 0;
+	background-color: rgb(253, 246, 209);
+	font-weight: 500;
+	font-size: 18px;
+}
+
+.result {
+	display: block;
+	position: relative;
+	background-color: rgb(255, 217, 0);
+	padding: 20px;
+}
+
+.res-user {
+	display: block;
+	position: relative;
+	font-size: 24px;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+
+.res-user strong {
+	color: red;
+}
+
+.btn-reset {
+	display: inline-block;
+	position: relative;
+	border: 1.5px solid black;
+	border-radius: 10px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.btn-reset:hover {
+	background-color: yellow;
+}
