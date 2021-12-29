@@ -53,7 +53,8 @@ const makeBoard = (n) => {
   for (let c = 0; c < n; c++) {
     for (let r = 0; r < n; r++) {
       const base = document.createElement("button")
-      base.classList.add("btn", clsName)
+      base.classList.add("btn")
+      base.classList.add(clsName)
       base.addEventListener("click", (e) => {
         checkCorrect(e)
       })
@@ -68,11 +69,8 @@ const makeBoard = (n) => {
       }
       if ((parseInt(Math.random() * 2)) == 1) {
         gameBoard.append(base)
-        console.log('append')
       } else {
         gameBoard.prepend(base)
-        console.log('prepend')
-
       }
     }
   }
