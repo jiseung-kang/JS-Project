@@ -3,11 +3,11 @@
   display: none;
   place-items: center;
   grid-auto-rows: 1fr;
-  /* padding: 10px; */
+  overflow: hidden;
   gap: 10px;
   border: 1px solid darkgray;
   border-radius: 20px;
-  margin: 0 auto 20px auto;
+  margin: 120px auto;
   width: fit-content;
 }
 
@@ -23,6 +23,12 @@
   background: rgb(255, 177, 177);
   cursor: pointer;
   transform: rotate(5deg);
+  animation: .5s;
+}
+
+.btn-start:hover {
+  transform: rotate(0deg);
+
 }
 
 .btn {

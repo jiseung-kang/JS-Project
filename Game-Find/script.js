@@ -30,14 +30,14 @@ function playGame() {
   // 게임판 만들기
   if (i < 6) {
     makeBoard(3);
-    gameBoard.style.zoom = "1";
+    gameBoard.style.zoom = "0.9";
 
   } else if (i < 11) {
     makeBoard(4);
-    gameBoard.style.zoom = "0.8";
+    gameBoard.style.zoom = "0.7";
   } else {
     makeBoard(5);
-    gameBoard.style.zoom = "0.6";
+    gameBoard.style.zoom = "0.55";
   }
 }
 
@@ -63,17 +63,22 @@ const makeBoard = (n) => {
           base.classList.add("invert")
         } else
           base.classList.add("flip")
-        gameBoard.append(base)
       } else {
         base.style.transform = `rotate(${tmp++ * degree}deg)`;
+      }
+      if ((parseInt(Math.random() * 2)) == 1) {
         gameBoard.append(base)
+        console.log('append')
+      } else {
+        gameBoard.prepend(base)
+        console.log('prepend')
+
       }
     }
   }
 }
 
 const checkCorrect = (e) => {
-  console.log(e.currentTarget.classList)
   for (let c of e.currentTarget.classList)
     if (c == "flip" || c == "invert") {
       i++;
