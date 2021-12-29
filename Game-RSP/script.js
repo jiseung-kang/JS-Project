@@ -70,7 +70,7 @@ const getScore = (s) => {
 	userResult.textContent = score;
 	playResult.textContent = `Enemy : ${options[enemyChoice]} You : ${options[userChoice]} ➡️  [${values[0]}] 점을 획득했습니다.`;
 	// 게임을 다시 시작한다.
-	startGame = setInterval(playGame, 100);
+	startGame = setInterval(playGame, 120);
 };
 
 // 게임 다시하기. 점수를 초기화하고 게임 규칙을 변경한다.
@@ -87,7 +87,7 @@ function updateRule() {
 }
 
 // 게임을 시작
-let startGame = setInterval(playGame, 100);
+let startGame = setInterval(playGame, 120);
 
 // 유저의 인풋별 게임 진행
 userChoiceS.addEventListener('click', () => rspGame(0));
