@@ -75,9 +75,14 @@ const getScore = (s) => {
 
 // 게임 다시하기. 점수를 초기화하고 게임 규칙을 변경한다.
 function resetGame() {
+	clearInterval(startGame);
 	score = 0;
-	getScore(0);
 	updateRule();
+	// getScore(0);
+	userResult.textContent = score;
+	playResult.textContent = `이제부터 새로운 규칙으로 변경됩니다!`
+	// 게임을 다시 시작한다.
+	startGame = setInterval(playGame, 120);
 }
 
 // 게임 규칙 변경
