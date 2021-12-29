@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Strange</title>
-		<link rel="stylesheet" href="../Module-Template/reset.css">
-		<link rel="stylesheet" href="../Module-Template/style.css">
-		<link rel="stylesheet" href="style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../Module-Template/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../Module-Template/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../Module-Template/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./favicon_io/site.webmanifest">
-</head>
-<body>
-<main id="app">
-	<h1 class="tit-name"> 🎮 이상한 다른 그림 찾기 🎮 </h1>
-	<p class="cont-desc">
-	<strong>이상한 다른 그림 찾기</strong>에서는<br />어떻게 점수를 얻을까요?<br />규칙을 찾아 점수를 높여보세요!</p>
-    <article class="play">
-    </article>
-		<article class="result">
-				<h2 class="a11y-blind">결과</h2>
-				<div class="res-user">현재 점수 : <strong class="res-score">0</strong class="res-user"></div>
-				<button class="btn-reset">다시하기</button>
-				<p class="cont-desc">
-					<strong>주의</strong><br />다시하기버튼을 누르면<br />새로운 규칙이 등장합니다!
-				</p>
-			</article>
-		</main>
 
-		<script src="script.js"></script>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>이상한 다른 그림 찾기</title>
+	<link rel="stylesheet" href="../Module-Template/reset.css" />
+	<link rel="stylesheet" href="../Module-Template/style.css" />
+	<link rel="stylesheet" href="./style.css" />
+	<link rel="apple-touch-icon" sizes="180x180" href="../Module-Template/favicon_io/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="../Module-Template/favicon_io/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="../Module-Template/favicon_io/favicon-16x16.png" />
+	<link rel="manifest" href="./favicon_io/site.webmanifest" />
+</head>
+
+<body>
+	<main id="app">
+		<h1 class="tit-name">🎮 이상한 다른 그림 찾기 🎮</h1>
+		<p class="cont-desc">
+			<strong>이상한 다른 그림 찾기</strong>에서는<br />어떤 규칙이 숨어 있을까요?<br />규칙을
+			찾아 다음 스테이지로 넘어가세요!
+		</p>
+		<article class="wrap-game">
+			<img src="./logotype-set/v914-ning-21a.eps" alt="">
+			<button class="test">1</button>
+			<button class="test">2</button>
+			<button class="test">3</button>
+			<button class="test">4</button>
+		</article>
+		<article class="result">
+			<h2 class="a11y-blind">결과</h2>
+			<button class="btn-reset">다시하기</button>
+			<p class="cont-desc">
+				<strong>규칙을 모르시겠다구요?</strong><br />다시하기버튼을 누르면<br />새로운 규칙이
+				등장합니다!
+			</p>
+		</article>
+	</main>
+	<script src="script.js"></script>
 </body>
+
 </html>

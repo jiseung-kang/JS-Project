@@ -1,0 +1,17 @@
+.wrap-game {
+  display: block;
+  margin: 0 auto 20px auto;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: grid;
+  background-color: green;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  padding: 10px;
+  gap: 10px;
+}
+
+.test {
+  border: 1px solid black;
+}
