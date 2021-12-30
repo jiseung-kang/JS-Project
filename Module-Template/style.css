@@ -52,7 +52,7 @@
 .play {
 	display: block;
 	position: relative;
-	height: 20px;
+	/* height: 20px; */
 	padding: 20px 0;
 	background-color: rgb(253, 246, 209);
 	font-weight: 500;
