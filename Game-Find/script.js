@@ -46,7 +46,7 @@ function playGame() {
 
 // 스테이지별 N*N 게임판 생성
 const makeBoard = (n) => {
-  let clsName = 'bg-' + i; // 스테이지별 사용되는 이미지를 불러올 클래스명
+  // let clsName = 'bg-' + i; // 스테이지별 사용되는 이미지를 불러올 클래스명
   let degree = 360 / (n * n) // 게임판의 그림 개수만큼의 각도 계산
   gameBoard.style.gridTemplateColumns = `repeat(${n}, 1fr)`; // N*N Grid
 

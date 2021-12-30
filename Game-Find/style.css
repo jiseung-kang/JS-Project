@@ -11,25 +11,6 @@
   width: fit-content;
 }
 
-.btn-start {
-  display: block;
-  position: relative;
-  margin: 20px auto;
-  width: 200px;
-  height: 200px;
-  border-radius: 40px;
-  font-size: 48px;
-  font-weight: 600;
-  background: rgb(255, 177, 177);
-  cursor: pointer;
-  transform: rotate(5deg);
-  transition: .5s;
-}
-
-.btn-start:hover {
-  transform: rotate(0deg);
-}
-
 .btn {
   zoom: 1;
   cursor: pointer;
