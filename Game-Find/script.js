@@ -113,3 +113,9 @@ function clearBoard() {
     gameBoard.removeChild(gameBoard.firstChild);
   }
 }
+
+let time = 0
+const turning = setInterval(() => {
+  gameBoard.style.transform = `rotate(${time}deg)`;
+  time += i * (.5);
+}, 50)
