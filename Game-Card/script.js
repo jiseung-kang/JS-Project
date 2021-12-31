@@ -6,7 +6,6 @@ const size = 200;
 let cardSize = 0;
 let gapSize = 10;
 let cardList = []
-let cards = {};
 
 // 시작버튼을 누르면 게임 시작
 btnStart.addEventListener('click', () => {
@@ -17,16 +16,16 @@ btnStart.addEventListener('click', () => {
 })
 
 // 현재 진행중인 스테이지
-let i = 2;
+let i = 1;
 // 남은 카드 개수
 let remain = 100;
 
 function playGame() {
-  txtBelow.innerHTML = `<strong>${i-1}번째 도전중</strong>`
+  txtBelow.innerHTML = `<strong>${i}번째 도전중</strong>`
 
   // 스테이지별 게임판의 크기 지정
-  makeCard((i) * (i) / 2)
-  makeBoard(i)
+  makeCard((i + 1) * (i + 1) / 2)
+  makeBoard(i + 1)
   cardSize = (size - 10 * 2 - 10 * (i - 1)) / (i + 1);
 }
 
@@ -34,7 +33,7 @@ let sorted = []
 let code = 0;
 const makeCard = (n) => {
   for (let i = 0; i < n; i++) {
-    let color = `rgb( ${new Array(3).fill().map(v => Math.random() * 255).join(", ")} )`;
+    let color = `rgb( ${new Array(3).fill().map(v => parseInt(Math.random() * 255)).join(", ")} )`;
     sorted.push([code, color]);
     sorted.push([code, color]);
     code++;
@@ -48,7 +47,6 @@ function shuffle() {
   while (true) {
     let card = sorted.splice(parseInt(Math.random() * (sorted.length)), 1)[0];
     cardList.push(card)
-    cards[card[0]] = card[1]
     if (sorted == [] || !sorted.length) {
       break;
     }
@@ -67,7 +65,7 @@ const makeBoard = (n) => {
       base.id = tmp;
       base.classList.add(cardList[base.id][0]) // 짝인지 확인하기 위한 코드 넣기
       base.classList.add("card") // 카드모양
-      cardSize = (size / (i + 1));
+      cardSize = parseInt(size / (i + 1));
       gameBoard.style.gap = "auto";
       base.style.width = `${cardSize}px`
       base.style.height = `${cardSize}px`
@@ -120,25 +118,21 @@ const checkCard = (e) => {
   }
   // 같은 쌍이라면
   else if (selected[0].classList[0] == selected[1].classList[0]) {
-    console.log("맞췄다", selected)
-    console.log("색깔 확인", selected)
     selected[0].classList.add("flipped")
     selected[1].classList.add("flipped")
     // 남은 카드의 개수 2개 제거하기
     remain -= 2;
   } else {
     // 다른 쌍이라면
-    console.log("틀렸다", selected)
     selected[0].classList.remove("flipped")
     selected[1].classList.remove("flipped")
     clearTimeout(back)
   }
   // 스테이지 클리어
   if (remain <= 0) {
-    console.log('clear')
     // 다음 스테이지로 넘어간다.
     clearBoard();
-    i += 1;
+    i += 2;
     playGame();
   }
   return selected;
