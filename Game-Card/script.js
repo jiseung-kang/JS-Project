@@ -17,39 +17,39 @@ btnStart.addEventListener('click', () => {
 })
 
 // 현재 진행중인 스테이지
-let i = 1;
+let i = 2;
 // 남은 카드 개수
 let remain = 100;
 
 function playGame() {
-  txtBelow.innerHTML = `<strong>${i} / 15 도전중</strong>`
+  txtBelow.innerHTML = `<strong>${i-1}번째 도전중</strong>`
 
   // 스테이지별 게임판의 크기 지정
-  makeCard((i + 1) * (i + 1) / 2)
-  makeBoard(i + 1)
+  makeCard((i) * (i) / 2)
+  makeBoard(i)
   cardSize = (size - 10 * 2 - 10 * (i - 1)) / (i + 1);
 }
 
-let list = []
+let sorted = []
 let code = 0;
 const makeCard = (n) => {
   for (let i = 0; i < n; i++) {
     let color = `rgb( ${new Array(3).fill().map(v => Math.random() * 255).join(", ")} )`;
-    list.push([code, color]);
-    list.push([code, color]);
+    sorted.push([code, color]);
+    sorted.push([code, color]);
     code++;
   }
-  remain = list.length;
+  // 카드 개수 갱신
+  remain = sorted.length;
   shuffle();
-  console.log(cardList)
 }
 
 function shuffle() {
   while (true) {
-    let card = list.splice(parseInt(Math.random() * (list.length)), 1)[0];
+    let card = sorted.splice(parseInt(Math.random() * (sorted.length)), 1)[0];
     cardList.push(card)
     cards[card[0]] = card[1]
-    if (list == [] || !list.length) {
+    if (sorted == [] || !sorted.length) {
       break;
     }
   }
@@ -64,79 +64,84 @@ const makeBoard = (n) => {
     for (let r = 0; r < n; r++) {
       // 기본 이미지에 대해 버튼 요소 생성
       const base = document.createElement("button")
-      // console.log(Object.keys(cards)[tmp])
-      base.classList.add(cardList[tmp][0]) // 같은 카드인지 확인하기 위한 코드 넣기
+      base.id = tmp;
+      base.classList.add(cardList[base.id][0]) // 짝인지 확인하기 위한 코드 넣기
       base.classList.add("card") // 카드모양
-      base.style.background = cardList[tmp++][1];
       cardSize = (size / (i + 1));
       gameBoard.style.gap = "auto";
       base.style.width = `${cardSize}px`
       base.style.height = `${cardSize}px`
       // 이벤트 리스너
-      console.log(base.style.background)
       base.addEventListener("click", (e) => {
-        base.classList.add("flipped")
-        if (!base.id)
-          base.id = tmp++;
-        // flip(e);
-        checkCard(e);
-      })
-      gameBoard.append(base)
+        selected.push(e.currentTarget)
+        flip(e)
+      });
+      gameBoard.append(base);
+      tmp++;
     }
   }
 }
 
 const flip = (e) => {
-  setTimeout(() => {
-    console.log("id", e.target.classList)
-    e.target.style.background = cards[e.target.classList[0]];
-    // e.target.style.transform = "rotateY(180deg)";
-  }, 100)
+  // 클릭한 카드의 색깔 보여주기
+  e.target.style.background = cardList[e.target.id][1];
+
+  if (selected.length == 2) {
+    let selectedCard = checkCard(e);
+    if (selectedCard[0].classList[selectedCard[0].classList.length - 1] == "flipped") {
+      back(selectedCard[0], "none")
+      back(selectedCard[1], "none")
+      selectedCard[0].style.cursor = "default";
+      selectedCard[1].style.cursor = "default";
+      selectedCard[0].disabled = "true";
+      selectedCard[1].disabled = "true"
+    } else {
+      back(selectedCard[0], "pink")
+      back(selectedCard[1], "pink")
+    }
+    selected = []
+  } else {
+    back(e.target, "pink")
+  }
 }
 
+const back = (target, color) => {
+  setTimeout(() => {
+    target.style.background = color;
+  }, 500)
+}
 
-let selectedCode = -1;
-let cardSelected = null;
 // 맞는 선택인지 확인
+let selected = []
 const checkCard = (e) => {
-  if (cardSelected && cardSelected.id == e.target.id) {
+  // 같은 카드를 선택했다!
+  if (selected[0].id == selected[1].id) {
     console.log("Do nothing!!")
-    return;
   }
-  if (selectedCode == -1) {
-    selectedCode = e.currentTarget.classList[0];
-    cardSelected = e.currentTarget;
-    cardSelected.style.cursor = "default";
+  // 같은 쌍이라면
+  else if (selected[0].classList[0] == selected[1].classList[0]) {
+    console.log("맞췄다", selected)
+    console.log("색깔 확인", selected)
+    selected[0].classList.add("flipped")
+    selected[1].classList.add("flipped")
+    // 남은 카드의 개수 2개 제거하기
+    remain -= 2;
   } else {
-    e.target.disabled = true;
-    cardSelected.disabled = true;
-    e.target.style.cursor = "default";
-    cardSelected.style.cursor = "default";
-
-    if (cardSelected.classList[0] == e.currentTarget.classList[0]) {
-      e.target.style.background = "none";
-      cardSelected.style.background = "none"
-      remain -= 2;
-    } else {
-      e.target.cursor = "pointer";
-      cardSelected.cursor = "pointer";
-      e.target.disabled = false;
-      cardSelected.disabled = false;
-      e.target.classList.remove("flipped")
-      cardSelected.classList.remove("flipped")
-    }
-    cardSelected = null;
-    selectedCode = -1;
+    // 다른 쌍이라면
+    console.log("틀렸다", selected)
+    selected[0].classList.remove("flipped")
+    selected[1].classList.remove("flipped")
+    clearTimeout(back)
   }
-
   // 스테이지 클리어
-  if (remain == 0) {
+  if (remain <= 0) {
     console.log('clear')
     // 다음 스테이지로 넘어간다.
     clearBoard();
-    i += 2;
+    i += 1;
     playGame();
   }
+  return selected;
 }
 
 // 게임판 초기화

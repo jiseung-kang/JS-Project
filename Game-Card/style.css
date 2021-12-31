@@ -1,0 +1,19 @@
+.wrap-game {
+  position: relative;
+  display: none;
+  place-items: center;
+  grid-auto-rows: 1fr;
+  overflow: hidden;
+  gap: 10px;
+  margin: 120px auto;
+  width: fit-content;
+}
+
+.card {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  background-color: pink;
+  perspective: 800px;
+  transition: all 1s;
+}
